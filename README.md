@@ -10,3 +10,7 @@ AMQP adalah singkatan dari Advanced Message Queuing Protocol. Ini adalah desain 
    - `guest:guest@localhost:5672` adalah string koneksi yang digunakan untuk terhubung ke broker AMQP. Ini terdiri dari tiga bagian:
      - `guest:guest`: Ini adalah kombinasi **nama pengguna** dan **kata sandi** yang digunakan untuk autentikasi. Dalam hal ini, baik nama pengguna maupun kata sandi adalah "guest".
      - `localhost:5672`: Ini menunjukkan nama host dan nomor port dari broker AMQP. Dalam hal ini, itu terhubung ke broker yang berjalan di localhost menggunakan port 5672.
+
+3. **Simulation slow subscriber.**
+![alt text](<assets/img/Simulation slow subscriber.jpg>)
+> Saya menjalankan publisher sebanyak 3 kali dan dan dapat dilihat bahwa queued messagenya mencapai 10, artinya terdapat 10 message yang ada pada antrian sebelum nantinya diterima subscriber. Saya disini menghapus comment pada `thread::sleep(ten_millis);` yang artinya saya membuat subsciber memberikan delay untuk tiap prosesnya dalam menerima data dari message broker. Yang terjadi, queued messages pada message broker akan bertambah seiring dengan bertambahnya delay karena publisher mengirim lebih cepat dibandingkan subscriber menerima.
