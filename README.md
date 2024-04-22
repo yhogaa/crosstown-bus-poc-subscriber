@@ -12,5 +12,10 @@ AMQP adalah singkatan dari Advanced Message Queuing Protocol. Ini adalah desain 
      - `localhost:5672`: Ini menunjukkan nama host dan nomor port dari broker AMQP. Dalam hal ini, itu terhubung ke broker yang berjalan di localhost menggunakan port 5672.
 
 3. **Simulation slow subscriber.**
-![alt text](<assets/img/Simulation slow subscriber.jpg>)
+![slow](<assets/img/Simulation slow subscriber.jpg>)
 > Saya menjalankan publisher sebanyak 3 kali dan dan dapat dilihat bahwa queued messagenya mencapai 10, artinya terdapat 10 message yang ada pada antrian sebelum nantinya diterima subscriber. Saya disini menghapus comment pada `thread::sleep(ten_millis);` yang artinya saya membuat subsciber memberikan delay untuk tiap prosesnya dalam menerima data dari message broker. Yang terjadi, queued messages pada message broker akan bertambah seiring dengan bertambahnya delay karena publisher mengirim lebih cepat dibandingkan subscriber menerima.
+
+4. **Reflection and Running at least three subscribers.**
+![terminal](assets/img/Terminal.jpg)
+![3 subs](<assets/img/Reflection and Running at least three subscribers.jpg>)
+> Saya melakukan hal yang sama seperti pada Simulation slow subscriber yaitu menjalankan publisher secara cepat sebanyak 3 kali. Bedanya sekarang saya menjalankan subscribernya sebanyak 3 yang membuat pengiriman datanya menjadi lebih cepat dan menghasilkan jumlah queued message yang lebih sedikit. Seperti yang dapat dilihat bahwa yang sebelumnya queued messages nya sebanyak 10, sekarang berkurang menjadi 3. Hal ini terjadi karena message broker mendistribusikan data yang diterima dari publisher ke semua subscriber yang terhubung.
